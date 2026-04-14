@@ -124,7 +124,7 @@ export default function StoreHome() {
             </h2>
             <div className="bg-green-900/40 border border-green-500/30 p-4 mb-6 rounded">
               <p className="text-gray-300 text-sm flex items-start gap-2">
-                 <AlertCircle className="w-5 h-5 text-yellow-500 flex-shrink-0" pb="1"/>
+                 <AlertCircle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
                  <span>Paste your TrueMoney Voucher link below. The voucher must be sent exclusively to phone number <strong className="text-[#39ff14]">0621466134</strong>.</span>
               </p>
             </div>
