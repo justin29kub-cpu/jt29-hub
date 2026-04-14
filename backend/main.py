@@ -279,6 +279,24 @@ def admin_dashboard(admin_user: User = Depends(get_admin_user), db: Session = De
     keys_in_stock = db.query(ProductKey).filter(ProductKey.is_sold == False).count()
     return {"total_sales": total_sales, "revenue": revenue, "products_count": products_count, "keys_in_stock": keys_in_stock}
 
+# --- USER ORDER HISTORY ---
+@app.get("/api/my-orders")
+def get_my_orders(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    orders = db.query(Order).filter(Order.customer_id == current_user.id).order_by(Order.created_at.desc()).all()
+    result = []
+    for o in orders:
+        product = db.query(Product).filter(Product.id == o.product_id).first()
+        key = db.query(ProductKey).filter(ProductKey.id == o.key_id).first()
+        result.append({
+            "id": o.id,
+            "product_name": product.name if product else "Deleted",
+            "key_value": key.key_value if key else "N/A",
+            "amount": product.price if product else 0,
+            "status": o.payment_status,
+            "created_at": o.created_at.strftime("%Y-%m-%d %H:%M") if o.created_at else "N/A",
+        })
+    return result
+
 # --- HISTORY API ---
 @app.get("/api/admin/orders")
 def get_all_orders(admin_user: User = Depends(get_admin_user), db: Session = Depends(get_db)):
