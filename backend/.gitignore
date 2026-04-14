@@ -1,0 +1,29 @@
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Database (NEVER push the real database)
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment variables (secrets)
+.env
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

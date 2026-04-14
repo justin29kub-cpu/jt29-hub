@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-green: #39ff14;
+  --color-neon-green-dim: rgba(57, 255, 20, 0.4);
+  --color-dark-surface: #0a0a0a;
+}
+
+body {
+  background-color: #000;
+  color: var(--color-neon-green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.glitch-text {
+  text-shadow: 2px 2px 0px rgba(0,255,0,0.5), -2px -2px 0px rgba(255,0,0,0.5);
+}
+
+.neon-border {
+  border: 1px solid var(--color-neon-green);
+  box-shadow: 0 0 10px var(--color-neon-green-dim);
+}
+
+.neon-border:hover {
+  box-shadow: 0 0 20px var(--color-neon-green);
+}
